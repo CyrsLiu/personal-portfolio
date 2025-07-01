@@ -1,16 +1,17 @@
-export default function About() {
+export default function Education() {
   return (
-    <section id="about" className="py-16 flex flex-col items-center">
-      <img src="/profile.jpg" alt="Your Name" className="w-32 h-32 rounded-full mb-4" />
-      <h2 className="text-3xl font-bold mb-4">About Me</h2>
-      <p className="text-lg text-center max-w-xl">
-        {/* Add your bio here! */}
-        As a computer science student and software developer, I'm driven to create impactful technology solutions that enhance user experiences. My foundation in software engineering, paired with a passion for continuous learning, motivates me to tackle new challenges and innovate in a constantly evolving tech landscape.
-
-        I specialize in Full Stack Development, AI & Machine Learning, and algorithm optimization, and I'm always eager to collaborate and contribute to projects that push the boundaries of technology.
-
-        Outside the tech world, you'll find me exploring new music, staying active, and enjoying quality time with friends and family. I thrive in dynamic environments and am always enthusiastic about opportunities to learn and make a meaningful impact!
-      </p>
+    <section id="education" className="py-16 bg-gray-50">
+      <div className="max-w-2xl mx-auto">
+        <h2 className="text-3xl font-bold mb-6">Education</h2>
+        <ul className="space-y-6">
+          <li>
+            <div className="text-xl font-semibold">B.S. Computer Science</div>
+            <div className="text-gray-600">University of California, Irvine</div>
+            <div className="text-gray-500">Sep 2021 – Jun 2025</div>
+          </li>
+          {/* Add more degrees/schools as needed */}
+        </ul>
+      </div>
     </section>
   );
 }

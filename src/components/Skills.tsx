@@ -1,16 +1,23 @@
-export default function About() {
+const skills = [
+  "Python", "JavaScript", "TypeScript", "React", "Next.js", "HTML/CSS", "C", "Java", "Tailwind CSS", "Git"
+];
+
+export default function Skills() {
   return (
-    <section id="about" className="py-16 flex flex-col items-center">
-      <img src="/profile.jpg" alt="Your Name" className="w-32 h-32 rounded-full mb-4" />
-      <h2 className="text-3xl font-bold mb-4">About Me</h2>
-      <p className="text-lg text-center max-w-xl">
-        {/* Add your bio here! */}
-        As a computer science student and software developer, I'm driven to create impactful technology solutions that enhance user experiences. My foundation in software engineering, paired with a passion for continuous learning, motivates me to tackle new challenges and innovate in a constantly evolving tech landscape.
-
-        I specialize in Full Stack Development, AI & Machine Learning, and algorithm optimization, and I'm always eager to collaborate and contribute to projects that push the boundaries of technology.
-
-        Outside the tech world, you'll find me exploring new music, staying active, and enjoying quality time with friends and family. I thrive in dynamic environments and am always enthusiastic about opportunities to learn and make a meaningful impact!
-      </p>
+    <section id="skills" className="py-16 bg-gray-50">
+      <div className="max-w-2xl mx-auto">
+        <h2 className="text-3xl font-bold mb-6">Skills</h2>
+        <div className="flex flex-wrap gap-3">
+          {skills.map((skill, idx) => (
+            <span
+              key={idx}
+              className="px-4 py-2 bg-blue-100 rounded-full text-blue-800 font-semibold text-sm"
+            >
+              {skill}
+            </span>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
