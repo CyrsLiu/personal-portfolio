@@ -21,8 +21,9 @@ export default function About() {
   }, []);
 
   const paragraphs = [
-    `As a computer science student and software developer, I'm driven to create impactful technology solutions that enhance user experiences...`,
-    `Outside the tech world, you'll find me exploring new music, staying active...`
+    `As a computer science student and software developer, I'm driven to create impactful technology solutions that enhance user experiences. My foundation in software engineering, paired with a passion for continuous learning, motivates me to tackle new challenges and innovate in a constantly evolving tech landscape.`,
+    `I specialize in Full Stack Development, AI & Machine Learning, and algorithm optimization, and I'm always eager to collaborate and contribute to projects that push the boundaries of technology.`,
+    `Outside the tech world, you'll find me exploring new music, staying active, and enjoying quality time with friends and family. I thrive in dynamic environments and am always enthusiastic about opportunities to learn and make a meaningful impact!`
   ];
 
   return (
