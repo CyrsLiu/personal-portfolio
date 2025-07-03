@@ -1,12 +1,3 @@
-const navItems = [
-  { label: "About", href: "#about" },
-  { label: "Education", href: "#education" },
-  { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
-  { label: "Resume", href: "#resume" },
-  { label: "Contact", href: "#contact" },
-];
-
 export default function Navbar() {
   const navItems = [
     { label: "About", href: "#about" },

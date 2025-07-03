@@ -8,6 +8,7 @@ export default function Education() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    const element = ref.current;
     const obs = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -17,17 +18,21 @@ export default function Education() {
       },
       { threshold: 0.2 }
     );
-    ref.current && obs.observe(ref.current);
-    return () => ref.current && obs.unobserve(ref.current);
+    if (element) {
+      obs.observe(element);
+    }
+    return () => {
+      if (element) {
+        obs.unobserve(element);
+      }
+    };
   }, []);
 
   return (
     <section id="education" className="py-16 bg-white">
       <div
         ref={ref}
-        className={`fade-in ${
-          visible ? 'visible' : ''
-        } max-w-3xl mx-auto flex flex-col md:flex-row items-start md:items-center gap-8 border-2 border-blue-200 rounded-xl p-8`}
+        className={`fade-in ${visible ? 'visible' : ''} max-w-3xl mx-auto flex flex-col md:flex-row items-start md:items-center gap-8 border-2 border-blue-200 rounded-xl p-8`}
       >
         <div className="flex-shrink-0">
           <Image
@@ -38,9 +43,10 @@ export default function Education() {
             className="object-contain"
           />
         </div>
-
         <div className="flex flex-col">
-          <h2 className="typewriter text-3xl font-semibold text-blue-700 mb-2">Education</h2>
+          <h2 className="typewriter text-3xl font-semibold text-blue-700 mb-2">
+            Education
+          </h2>
           <div className="text-xl font-medium">
             University of California, Irvine
           </div>
@@ -51,7 +57,7 @@ export default function Education() {
             <span className="font-semibold">Dean&apos;s Honor List:</span> 12× (all quarters)
           </div>
           <div className="text-gray-700 mb-2">
-            <span className="font-semibold">Specialization:</span> Intelligent Systems – Artifical Intelligence &amp; Machine Learning
+            <span className="font-semibold">Specialization:</span> Intelligent Systems – Artificial Intelligence &amp; Machine Learning
           </div>
           <div className="mt-4">
             <div className="font-semibold mb-2">Relevant Coursework:</div>
@@ -69,5 +75,6 @@ export default function Education() {
     </section>
   );
 }
+
 
 
