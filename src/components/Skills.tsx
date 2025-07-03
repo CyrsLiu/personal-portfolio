@@ -19,11 +19,10 @@ const skills = [
 
 export default function Skills() {
   const titleRef = useRef<HTMLHeadingElement>(null);
-  const gridRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const gridRefs = useRef<Array<HTMLDivElement | null>>([]);
   const [gridVis, setGridVis] = useState<boolean[]>(skills.map(() => false));
 
   useEffect(() => {
-    // Typewriter removal
     const tv = titleRef.current;
     if (tv) {
       const handler = () => {
@@ -33,25 +32,23 @@ export default function Skills() {
       tv.addEventListener('animationend', handler);
     }
 
-    // Fade-in individual skill cards
-    const obs = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const idx = Number(entry.target.getAttribute('data-idx'));
-            setGridVis(prev => {
-              const arr = [...prev];
-              arr[idx] = true;
-              return arr;
-            });
-            obs.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
+    const refsArray = [...gridRefs.current];
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const idx = Number(entry.target.getAttribute('data-idx'));
+          setGridVis(prev => {
+            const next = [...prev];
+            next[idx] = true;
+            return next;
+          });
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
 
-    gridRefs.current.forEach(el => el && obs.observe(el));
+    refsArray.forEach(el => el && obs.observe(el));
+    return () => refsArray.forEach(el => el && obs.unobserve(el));
   }, []);
 
   return (
@@ -71,7 +68,7 @@ export default function Skills() {
             <div
               key={skill.name}
               data-idx={idx}
-              ref={el => gridRefs.current![idx] = el}
+              ref={el => { gridRefs.current[idx] = el; }}
               className={`bg-white rounded-xl shadow p-4 flex flex-col items-center font-bold text-black hover:scale-105 transition transform ${
                 gridVis[idx] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
               }`}
@@ -91,5 +88,6 @@ export default function Skills() {
     </section>
   );
 }
+
 
 
